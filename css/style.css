@@ -36,3 +36,15 @@ body{
     font-family: 'ArcadeClassic', sans-serif;
     font-size: 50px;
 }
+
+.snake-head{
+    background-color: white;
+}
+
+.snake-body{
+    background-color: #77bfb4;
+}
+
+.food{
+    background-color: orange;
+}
