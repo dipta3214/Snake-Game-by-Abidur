@@ -8,7 +8,7 @@
 - `cd` into the folder.
 - Edit the project as you would like
 
-##Credits
+## Credits
 - [StackOverFlow](https://stackoverflow.com/)
 - [Youtube](https://www.youtube.com/)
 - [W3Schools](https://www.w3schools.com/)
