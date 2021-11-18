@@ -28,7 +28,27 @@ food.setAttribute('class', 'food')
 // functions
 
 // game logics
+const gamePlay = () => {
 
+    // Displaying the snake and food on board
+    snakeHeadPosition.forEach((elements , index) => {
+        snake.style.gridRowStart = elements.y
+        snake.style.gridColumnStart = elements.x;
+        // We need to make the head one color and the body another color
+        if(index === 0) {
+            snake.classList.add('snake-head');
+        }else{
+            snake.classList.add('snake-body')
+        }
+        board.appendChild(snake)
+    })
+
+    food.style.gridRowStart = foodPosition.y
+    food.style.gridColumnStart = foodPosition.x
+    board.appendChild(food)
+}
+
+gamePlay()
 
 
 // event handlers
