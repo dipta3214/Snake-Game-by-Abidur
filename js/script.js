@@ -18,12 +18,19 @@ let foodPosition = {
     y : 8
 }
 
+const gameloop = (currentTime) => {
+    requestAnimationFrame(gameloop)
+    if((currentTime - lastRecordedTime)/1000 < 1/9){
+        return;
+    }
+    lastRecordedTime = currentTime;
+    gamePlay();
+}
 
 
 
 const gamePlay = () => {
-    
-    
+   
 
     // Displaying snake
     board.innerHTML = ""
@@ -49,9 +56,7 @@ const gamePlay = () => {
 
 
 
-
-
-
+window.requestAnimationFrame(gameloop)
 
 window.addEventListener('keydown', e => {
     fireKey.innerText = ""
