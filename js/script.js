@@ -1,69 +1,79 @@
-// variables
-let snakeDirection = {
-    x : 0,
-    y : 0
-}
+// Variables
+let inputDir = {x : 0, y : 0}
 
-let board = document.querySelector('.board')
-
-let score = document.querySelector('.score span')
-
+let board = document.querySelector('#board')
 let fireKey = document.querySelector('.firekey')
+let highScore = document.querySelector('.highscore span')
+let score = document.querySelector('.score span')
+let lastRecordedTime = 0
+
 
 let snakeHeadPosition = [
-    {
-        x : 15,
-        y : 18
-    }
+    {x : 13, 
+    y : 15}
 ]
 
 let foodPosition = {
-    x : 8,
-    y : 6
+    x : 5,
+    y : 8
 }
 
 
 
-// creating the snake and food
-let snake = document.createElement('div')  // We will add two classes for it one for the head and the other for the body
 
-
-let food = document.createElement('div')
-food.setAttribute('class', 'food')
-
-// functions
-
-// game logics
 const gamePlay = () => {
+    
+    
 
-    // Displaying the snake and food on board
-    snakeHeadPosition.forEach((elements , index) => {
-        snake.style.gridRowStart = elements.y
-        snake.style.gridColumnStart = elements.x;
-        // We need to make the head one color and the body another color
-        if(index === 0) {
-            snake.classList.add('snake-head');
-        }else{
+    // Displaying snake
+    board.innerHTML = ""
+    snakeHeadPosition.forEach((e, index) => {
+        snake = document.createElement('div')
+        snake.style.gridRowStart = e.y;
+        snake.style.gridColumnStart = e.x;
+        if (index === 0 ){
+            snake.classList.add('snake-head')
+        }else {
             snake.classList.add('snake-body')
         }
         board.appendChild(snake)
     })
-
-    food.style.gridRowStart = foodPosition.y
-    food.style.gridColumnStart = foodPosition.x
+    // Displaying food
+    food = document.createElement('div')
+    food.style.gridRowStart = foodPosition.y;
+    food.style.gridColumnStart = foodPosition.x;
+    food.classList.add('food')
     board.appendChild(food)
+
 }
 
-gamePlay()
 
 
-// event handlers
 
-window.addEventListener('keydown' , (e) =>{
-    fireKey.innerText = ''
-    snakeDirection = {
-        x : 0,
-        y : 1
+
+
+
+window.addEventListener('keydown', e => {
+    fireKey.innerText = ""
+    inputDir = {x: 0, y: 1}
+    switch (e.key) {
+        case "ArrowUp":
+            inputDir.x = 0;
+            inputDir.y = -1;
+            break;
+        case "ArrowRight":
+            inputDir.x = 1;
+            inputDir.y = 0;
+            break;
+        case "ArrowDown":
+            inputDir.x = 0;
+            inputDir.y = 1;
+            break;
+        case "ArrowLeft":
+            inputDir.x = -1;
+            inputDir.y = 0;
+            break;
+        default:
+            break;
     }
-   
 })

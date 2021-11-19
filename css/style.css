@@ -3,7 +3,7 @@ body{
     background-image: url('../img/background.jpg');
 }
 
-.board{
+#board{
     display: grid;
     grid-template-rows: repeat(20 ,1fr);
     grid-template-columns: repeat(20, 1fr);
