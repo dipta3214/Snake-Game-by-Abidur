@@ -1,8 +1,14 @@
 // variables
+let snakeDirection = {
+    x : 0,
+    y : 0
+}
 
 let board = document.querySelector('.board')
 
 let score = document.querySelector('.score span')
+
+let fireKey = document.querySelector('.firekey')
 
 let snakeHeadPosition = [
     {
@@ -52,3 +58,12 @@ gamePlay()
 
 
 // event handlers
+
+window.addEventListener('keydown' , (e) =>{
+    fireKey.innerText = ''
+    snakeDirection = {
+        x : 0,
+        y : 1
+    }
+   
+})
