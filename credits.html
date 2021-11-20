@@ -5,45 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        h1 {
-            color: brown;
-        }
-    </style>
-    <title>Document</title>
+    <link rel="stylesheet" href="css/credits.css">
+    <link href="http://fonts.cdnfonts.com/css/arcade-classic" rel="stylesheet">
+    <title>Credits</title>
 </head>
 
 <body>
-    <h1>bleh</h1>
+    <div class="header">
+        <h1>Credits</h1>
+    </div>
+
+    <div class="content">
+        <h4>Game Created & Designed By:</h4>
+        <h2>Abidur Rahman Dipta</h2>
+        <h3>Fullstack Developer</h3>
+    </div>
 
 
-
-    <script>
-        let text = document.querySelector('h1')
-        let movement = 0;
-        let lastTime = 0;
-
-        const move = (currentTime) => {
-            window.requestAnimationFrame(move)
-            if ((currentTime - lastTime) / 1000 < 1 / 50) {
-                return
-            }
-            lastTime = currentTime;
-            moveTwo()
-
-        }
-
-        const moveTwo = () => {
-            movement += 5;
-            text.style.transform = `translateX(${movement}px)`;
-            let ww = document.body.clientWidth - 100;
-            if (movement < ww) {
-                window.requestAnimationFrame(moveTwo)
-            }
-        }
-
-        window.requestAnimationFrame(moveTwo)
-    </script>
 </body>
 
 </html>

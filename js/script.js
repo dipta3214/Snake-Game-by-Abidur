@@ -2,12 +2,12 @@
 
 let board = document.querySelector('#board')
 let fireKey = document.querySelector('.firekey')
-let highScore = document.querySelector('.highscore span')
 let score = document.querySelector('.score span')
+let reload = document.querySelector('.reload')
 let lastRecordedTime = 0
 let gameOver = false
 
-// objects and arrays
+// positions and directions
 let snakeHeadPosition = [
     {x : 13, 
     y : 15}
@@ -24,6 +24,7 @@ let foodPosition = {
     y : 8
 }
 
+// Animation-frame
 const gameloop = (currentTime) => {
     requestAnimationFrame(gameloop)
     if((currentTime - lastRecordedTime)/1000 < 1/9 /* this 9 is the speed */){
@@ -49,7 +50,22 @@ const collision = () => {
 
 
 const gamePlay = () => {
-    
+    // After the collision
+    if(collision()){
+        snakeDirection = {x: 0, y: 0};
+        alert("Game is Over");
+        snakeHeadPosition = [{x: 13, y:15}]
+        score.innerText = 0;
+        fireKey.innerText = "Press any arrow key to start"
+    }
+
+    // When the snake eats food it's length increments and the position of food changes
+    if(snakeHeadPosition[0].y === foodPosition.y && snakeHeadPosition[0].x === foodPosition.x ){
+        snakeHeadPosition.unshift({x: snakeHeadPosition[0].x , y: snakeHeadPosition[0].y});
+        foodPosition = {x : Math.ceil(Math.random() * 19), y: Math.ceil(Math.random() * 19)}
+        score.innerText++
+    }
+
     // Moving the snake automatically
     for (let i = snakeHeadPosition.length - 2; i >= 0 ; i--){
         snakeHeadPosition[i+1] = {...snakeHeadPosition[i]};
@@ -80,6 +96,10 @@ const gamePlay = () => {
     board.appendChild(food)
 
 }
+
+reload.addEventListener('click', () =>{
+    location.reload();
+})
 
 
 // Setting up my arrow keys to move the snake
