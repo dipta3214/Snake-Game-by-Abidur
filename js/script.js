@@ -1,17 +1,23 @@
 // Variables
-let inputDir = {x : 0, y : 0}
 
 let board = document.querySelector('#board')
 let fireKey = document.querySelector('.firekey')
 let highScore = document.querySelector('.highscore span')
 let score = document.querySelector('.score span')
 let lastRecordedTime = 0
+let gameOver = false
 
-
+// objects and arrays
 let snakeHeadPosition = [
     {x : 13, 
     y : 15}
 ]
+
+let snakeDirection = {
+    x: 0,
+    y: 0
+}
+
 
 let foodPosition = {
     x : 5,
@@ -20,7 +26,7 @@ let foodPosition = {
 
 const gameloop = (currentTime) => {
     requestAnimationFrame(gameloop)
-    if((currentTime - lastRecordedTime)/1000 < 1/9){
+    if((currentTime - lastRecordedTime)/1000 < 1/9 /* this 9 is the speed */){
         return;
     }
     lastRecordedTime = currentTime;
@@ -29,15 +35,25 @@ const gameloop = (currentTime) => {
 
 
 
-const gamePlay = () => {
-   
 
-    // Displaying snake
+const gamePlay = () => {
+    
+
+    // Moving the snake automatically
+    for (let i = snakeHeadPosition.length - 2; i >= 0 ; i--){
+        snakeHeadPosition[i+1] = {...snakeHeadPosition[i]};
+    }
+
+    snakeHeadPosition[0].x += snakeDirection.x;
+    snakeHeadPosition[0].y += snakeDirection.y;
+
+    // Creating the snake, giving it a position and appending on board
     board.innerHTML = ""
     snakeHeadPosition.forEach((e, index) => {
         snake = document.createElement('div')
         snake.style.gridRowStart = e.y;
         snake.style.gridColumnStart = e.x;
+        // the index 0 is for the snake head and rest of the array is for the body
         if (index === 0 ){
             snake.classList.add('snake-head')
         }else {
@@ -45,7 +61,7 @@ const gamePlay = () => {
         }
         board.appendChild(snake)
     })
-    // Displaying food
+    // creating food, giving it a position and appending it on board
     food = document.createElement('div')
     food.style.gridRowStart = foodPosition.y;
     food.style.gridColumnStart = foodPosition.x;
@@ -55,30 +71,29 @@ const gamePlay = () => {
 }
 
 
-
-window.requestAnimationFrame(gameloop)
-
-window.addEventListener('keydown', e => {
+// Setting up my arrow keys to move the snake
+window.addEventListener('keydown', event => {
     fireKey.innerText = ""
-    inputDir = {x: 0, y: 1}
-    switch (e.key) {
+    switch (event.code) {
         case "ArrowUp":
-            inputDir.x = 0;
-            inputDir.y = -1;
+            snakeDirection.x = 0;
+            snakeDirection.y = -1;
             break;
         case "ArrowRight":
-            inputDir.x = 1;
-            inputDir.y = 0;
+            snakeDirection.x = 1;
+            snakeDirection.y = 0;
             break;
         case "ArrowDown":
-            inputDir.x = 0;
-            inputDir.y = 1;
+            snakeDirection.x = 0;
+            snakeDirection.y = 1;
             break;
         case "ArrowLeft":
-            inputDir.x = -1;
-            inputDir.y = 0;
+            snakeDirection.x = -1;
+            snakeDirection.y = 0;
             break;
         default:
             break;
     }
 })
+
+requestAnimationFrame(gameloop)
