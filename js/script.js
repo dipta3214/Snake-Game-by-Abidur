@@ -33,12 +33,20 @@ const gameloop = (currentTime) => {
     gamePlay();
 }
 
-
+// Collision conditions
+const collision = () => {
+    // When the snake hits itself
+    for(i = 1; i < snakeHeadPosition.length; i++){
+        if(snakeHeadPosition[i].x === snakeHeadPosition[0].x && snakeHeadPosition[i].y === snakeHeadPosition[0].y){
+            return gameOver = true;
+        }
+    }
+    
+}
 
 
 const gamePlay = () => {
     
-
     // Moving the snake automatically
     for (let i = snakeHeadPosition.length - 2; i >= 0 ; i--){
         snakeHeadPosition[i+1] = {...snakeHeadPosition[i]};
