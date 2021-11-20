@@ -41,7 +41,10 @@ const collision = () => {
             return gameOver = true;
         }
     }
-    
+    // When the snake hits the border
+    if(snakeHeadPosition[0].x >= 20 || snakeHeadPosition[0].x <= 0 || snakeHeadPosition[0].y >= 20 || snakeHeadPosition[0].y <= 0){
+        return gameOver = true;
+    }
 }
 
 
