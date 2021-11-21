@@ -50,3 +50,18 @@ body{
 .back a{
     color: white;
 }
+
+.social{
+    position: absolute;
+    top: 45%;
+    left: 42%;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.social a{
+    color: white;
+    margin: 10px;
+    font-size: 25px;
+}

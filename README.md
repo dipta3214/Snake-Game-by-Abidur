@@ -12,6 +12,7 @@
 - [Trello](https://trello.com/b/IbOYHikc/snake-game-by-abidur)
 
 ## Credits
-- [StackOverFlow](https://stackoverflow.com/)
-- [Youtube](https://www.youtube.com/)
+- [arcade font](https://www.cdnfonts.com/arcade-classic.font)
+- [requestAnimationFrame Youtube Video](https://www.youtube.com/watch?v=zBRqnSiq_VM)
 - [W3Schools](https://www.w3schools.com/)
+- [How to use arrow Keys](https://www.codegrepper.com/code-examples/javascript/addeventlistener+arrow+keys)

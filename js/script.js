@@ -27,7 +27,7 @@ let foodPosition = {
 // Animation-frame
 const gameloop = (currentTime) => {
     requestAnimationFrame(gameloop)
-    if((currentTime - lastRecordedTime)/1000 < 1/9 /* this 1/9 is the speed */){
+    if((currentTime - lastRecordedTime)/1000 < 1/8 /* this 1/9 is the speed */){
         return;
     }
     lastRecordedTime = currentTime;
@@ -85,17 +85,18 @@ const gamePlay = () => {
     // When the snake eats food it's length increments and the position of food changes
     if(snakeHeadPosition[0].y === foodPosition.y && snakeHeadPosition[0].x === foodPosition.x ){
         snakeHeadPosition.unshift({x: snakeHeadPosition[0].x , y: snakeHeadPosition[0].y});
-        foodPosition = {x : Math.ceil(Math.random() * 19), y: Math.ceil(Math.random() * 19)}
+        foodPosition = {x : Math.ceil(Math.random() * 18), y: Math.ceil(Math.random() * 18)}
         score.innerText++
     }
 
-    // Moving the snake automatically
+    // Moving the snake automatically and giving it directions
     for (let i = snakeHeadPosition.length - 2; i >= 0 ; i--){
-        snakeHeadPosition[i+1] = {...snakeHeadPosition[i]};
+        console.log(snakeHeadPosition[i+1] = {...snakeHeadPosition[i]});
     }
 
     snakeHeadPosition[0].x += snakeDirection.x;
     snakeHeadPosition[0].y += snakeDirection.y;
+
 
 }
 
