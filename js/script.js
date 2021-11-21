@@ -86,7 +86,7 @@ const gamePlay = () => {
     if(snakeHeadPosition[0].y === foodPosition.y && snakeHeadPosition[0].x === foodPosition.x ){
         snakeHeadPosition.unshift({x: snakeHeadPosition[0].x , y: snakeHeadPosition[0].y});
         foodPosition = {x : Math.ceil(Math.random() * 19), y: Math.ceil(Math.random() * 19)}
-        
+        score.innerText++
     }
 
     // Moving the snake automatically
