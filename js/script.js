@@ -85,6 +85,7 @@ const gamePlay = () => {
     // When the snake eats food it's length increments and the position of food changes
     if(snakeHeadPosition[0].y === foodPosition.y && snakeHeadPosition[0].x === foodPosition.x ){
         snakeHeadPosition.unshift({x: snakeHeadPosition[0].x , y: snakeHeadPosition[0].y});
+        foodPosition = {x : Math.ceil(Math.random() * 19), y: Math.ceil(Math.random() * 19)}
         
     }
 
