@@ -27,7 +27,7 @@ let foodPosition = {
 // Animation-frame
 const gameloop = (currentTime) => {
     requestAnimationFrame(gameloop)
-    if((currentTime - lastRecordedTime)/1000 < 1/9 /* this 9 is the speed */){
+    if((currentTime - lastRecordedTime)/1000 < 1/9 /* this 1/9 is the speed */){
         return;
     }
     lastRecordedTime = currentTime;
@@ -43,43 +43,20 @@ const collision = () => {
         }
     }
     // When the snake hits the border
-    if(snakeHeadPosition[0].x >= 20 || snakeHeadPosition[0].x <= 0 || snakeHeadPosition[0].y >= 20 || snakeHeadPosition[0].y <= 0){
+    if(snakeHeadPosition[0].x >= 21 || snakeHeadPosition[0].x <= 0 || snakeHeadPosition[0].y >= 21 || snakeHeadPosition[0].y <= 0){
         return gameOver = true;
     }
 }
 
 
 const gamePlay = () => {
-    // After the collision
-    if(collision()){
-        snakeDirection = {x: 0, y: 0};
-        alert("Game is Over");
-        snakeHeadPosition = [{x: 13, y:15}]
-        score.innerText = 0;
-        fireKey.innerText = "Press any arrow key to start"
-    }
-
-    // When the snake eats food it's length increments and the position of food changes
-    if(snakeHeadPosition[0].y === foodPosition.y && snakeHeadPosition[0].x === foodPosition.x ){
-        snakeHeadPosition.unshift({x: snakeHeadPosition[0].x , y: snakeHeadPosition[0].y});
-        foodPosition = {x : Math.ceil(Math.random() * 19), y: Math.ceil(Math.random() * 19)}
-        score.innerText++
-    }
-
-    // Moving the snake automatically
-    for (let i = snakeHeadPosition.length - 2; i >= 0 ; i--){
-        snakeHeadPosition[i+1] = {...snakeHeadPosition[i]};
-    }
-
-    snakeHeadPosition[0].x += snakeDirection.x;
-    snakeHeadPosition[0].y += snakeDirection.y;
 
     // Creating the snake, giving it a position and appending on board
     board.innerHTML = ""
-    snakeHeadPosition.forEach((e, index) => {
-        snake = document.createElement('div')
-        snake.style.gridRowStart = e.y;
-        snake.style.gridColumnStart = e.x;
+    snakeHeadPosition.forEach((elements, index) => {
+        let snake = document.createElement('div')
+        snake.style.gridRow = elements.y;
+        snake.style.gridColumn = elements.x;
         // the index 0 is for the snake head and rest of the array is for the body
         if (index === 0 ){
             snake.classList.add('snake-head')
@@ -89,11 +66,31 @@ const gamePlay = () => {
         board.appendChild(snake)
     })
     // creating food, giving it a position and appending it on board
-    food = document.createElement('div')
-    food.style.gridRowStart = foodPosition.y;
-    food.style.gridColumnStart = foodPosition.x;
+    let food = document.createElement('div')
+    food.style.gridRow = foodPosition.y;
+    food.style.gridColumn = foodPosition.x;
     food.classList.add('food')
     board.appendChild(food)
+
+
+    // After the collision
+    if(collision()){
+        snakeDirection = {x: 0, y: 0};
+        alert("Game is Over");
+        snakeHeadPosition = [{x: 13, y:15}]
+        score.innerText = 0;
+        fireKey.innerText = "Press any arrow key to start"
+    }
+
+   
+
+    // Moving the snake automatically
+    for (let i = snakeHeadPosition.length - 2; i >= 0 ; i--){
+        snakeHeadPosition[i+1] = {...snakeHeadPosition[i]};
+    }
+
+    snakeHeadPosition[0].x += snakeDirection.x;
+    snakeHeadPosition[0].y += snakeDirection.y;
 
 }
 
@@ -102,10 +99,8 @@ reload.addEventListener('click', () =>{
 })
 
 
-// Setting up my arrow keys to move the snake
-window.addEventListener('keydown', event => {
-    fireKey.innerText = ""
-    switch (event.code) {
+const arrowKeys = (e) => {
+    switch (e) {
         case "ArrowUp":
             snakeDirection.x = 0;
             snakeDirection.y = -1;
@@ -125,6 +120,12 @@ window.addEventListener('keydown', event => {
         default:
             break;
     }
+}
+
+// Setting up my arrow keys to move the snake
+window.addEventListener('keydown', (event) => {
+    fireKey.innerText = ""
+        arrowKeys(event.code)
 })
 
 requestAnimationFrame(gameloop)

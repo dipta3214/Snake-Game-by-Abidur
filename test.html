@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #board {
+            display: grid;
+            grid-template-columns: repeat(25, 1fr);
+            grid-template-rows: repeat(25, 1fr);
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            position: absolute;
+            left: 30%;
+        }
+
+        .texthead {
+            background-color: blue;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <section>
+        <div id="board"></div>
+    </section>
+
+
+    <script>
+        let finalRecordedTime = 0;
+        let textPosition = { x: 6, y: 6 }
+        let textDirection = { x: 0, y: 0 }
+        let board = document.querySelector('#board')
+
+
+        const main = (currentTime) => {
+            requestAnimationFrame(main)
+            if ((currentTime - finalRecordedTime) / 1000 < 1 / 15) {
+                return
+            }
+            finalRecordedTime = currentTime
+            gamePlay()
+        }
+
+        const collision = () => {
+            if (textPosition.x >= 25 || textPosition.x <= 0 || textPosition.y >= 25 || textPosition.y <= 0) {
+                return true
+            }
+        }
+
+        const snakeMove = () => {
+            textPosition.x += textDirection.x;
+            textPosition.y += textDirection.y
+        }
+
+        const gamePlay = () => {
+            if (collision()) {
+                textDirection = { x: 0, y: 0 }
+                alert("GameOver")
+                textPosition = { x: 6, y: 6 }
+            }
+
+            // Moving the box automatically
+            snakeMove()
+
+            console.log(textPosition)
+
+
+            // creating the text
+            board.innerHTML = ""
+            let text = document.createElement('div')
+            text.style.gridRowStart = textPosition.y;
+            text.style.gridColumnStart = textPosition.x;
+            text.classList.add("texthead")
+            board.appendChild(text)
+        }
+
+
+        window.requestAnimationFrame(main)
+
+        const snakeDirection = (e) => {
+            switch (e) {
+                case 38:
+                    textDirection.x = 0;
+                    textDirection.y = -1;
+                    snakeMove()
+                    break;
+                case 39:
+                    textDirection.x = 1;
+                    textDirection.y = 0;
+                    snakeMove()
+                    break;
+                case 40:
+                    textDirection.x = 0;
+                    textDirection.y = 1;
+                    snakeMove()
+                    break;
+                case 37:
+                    textDirection.x = -1;
+                    textDirection.y = 0;
+                    snakeMove()
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        window.addEventListener('keydown', (event) => {
+            snakeDirection(event.keyCode)
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>
