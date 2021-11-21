@@ -82,7 +82,11 @@ const gamePlay = () => {
         fireKey.innerText = "Press any arrow key to start"
     }
 
-   
+    // When the snake eats food it's length increments and the position of food changes
+    if(snakeHeadPosition[0].y === foodPosition.y && snakeHeadPosition[0].x === foodPosition.x ){
+        snakeHeadPosition.unshift({x: snakeHeadPosition[0].x , y: snakeHeadPosition[0].y});
+        
+    }
 
     // Moving the snake automatically
     for (let i = snakeHeadPosition.length - 2; i >= 0 ; i--){
