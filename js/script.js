@@ -3,9 +3,13 @@
 let board = document.querySelector('#board')
 let fireKey = document.querySelector('.firekey')
 let score = document.querySelector('.score span')
+let highscore = document.querySelector('.highscore span')
 let reload = document.querySelector('.reload')
 let lastRecordedTime = 0
 let gameOver = false
+highscore.innerText = localStorage.getItem('highscore')
+
+
 
 // positions and directions
 let snakeHeadPosition = [
@@ -24,17 +28,8 @@ let foodPosition = {
     y : 8
 }
 
-// Animation-frame
-const gameloop = (currentTime) => {
-    requestAnimationFrame(gameloop)
-    if((currentTime - lastRecordedTime)/1000 < 1/8 /* this 1/9 is the speed */){
-        return;
-    }
-    lastRecordedTime = currentTime;
-    gamePlay();
-}
 
-// Collision conditions
+// Collision function
 const collision = () => {
     // When the snake hits itself
     for(i = 1; i < snakeHeadPosition.length; i++){
@@ -55,27 +50,32 @@ const gamePlay = () => {
     board.innerHTML = ""
     snakeHeadPosition.forEach((elements, index) => {
         let snake = document.createElement('div')
-        snake.style.gridRow = elements.y;
-        snake.style.gridColumn = elements.x;
         // the index 0 is for the snake head and rest of the array is for the body
         if (index === 0 ){
             snake.classList.add('snake-head')
         }else {
             snake.classList.add('snake-body')
         }
+        snake.style.gridRow = elements.y;
+        snake.style.gridColumn = elements.x;
         board.appendChild(snake)
     })
     // creating food, giving it a position and appending it on board
     let food = document.createElement('div')
+    food.style.backgroundColor = 'orange'
     food.style.gridRow = foodPosition.y;
     food.style.gridColumn = foodPosition.x;
-    food.classList.add('food')
     board.appendChild(food)
 
 
     // After the collision
     if(collision()){
         snakeDirection = {x: 0, y: 0};
+        localStorage.getItem('highscore')
+        if(score.innerText > localStorage.getItem('highscore')){
+            parseInt(localStorage.setItem('highscore' , score.innerText))
+            highscore.innerText = parseInt(localStorage.getItem('highscore'))
+        }
         alert("Game is Over");
         snakeHeadPosition = [{x: 13, y:15}]
         score.innerText = 0;
@@ -91,7 +91,7 @@ const gamePlay = () => {
 
     // Moving the snake automatically and giving it directions
     for (let i = snakeHeadPosition.length - 2; i >= 0 ; i--){
-        console.log(snakeHeadPosition[i+1] = {...snakeHeadPosition[i]});
+        snakeHeadPosition[i+1] = {...snakeHeadPosition[i]};
     }
 
     snakeHeadPosition[0].x += snakeDirection.x;
@@ -100,6 +100,17 @@ const gamePlay = () => {
 
 }
 
+// Animation-frame
+const gameloop = (currentTime) => {
+    requestAnimationFrame(gameloop)
+    if((currentTime - lastRecordedTime)/1000 < 1/8 /* this 1/9 is the speed */){
+        return;
+    }
+    lastRecordedTime = currentTime;
+    gamePlay();
+}
+
+// Reload button event listener
 reload.addEventListener('click', () =>{
     location.reload();
 })

@@ -11,7 +11,7 @@
 ## Link for trello
 - [Trello](https://trello.com/b/IbOYHikc/snake-game-by-abidur)
 
-## Credits
+## Resources
 - [arcade font](https://www.cdnfonts.com/arcade-classic.font)
 - [requestAnimationFrame Youtube Video](https://www.youtube.com/watch?v=zBRqnSiq_VM)
 - [W3Schools](https://www.w3schools.com/)
