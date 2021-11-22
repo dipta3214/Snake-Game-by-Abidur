@@ -7,7 +7,12 @@ let highscore = document.querySelector('.highscore span')
 let reload = document.querySelector('.reload')
 let lastRecordedTime = 0
 let gameOver = false
-highscore.innerText = localStorage.getItem('highscore')
+
+if(!localStorage.getItem('highscore')){
+    localStorage.setItem('highscore', 0)
+}else {
+    highscore.innerText = localStorage.getItem('highscore')
+}
 
 
 
@@ -72,8 +77,8 @@ const gamePlay = () => {
     if(collision()){
         snakeDirection = {x: 0, y: 0};
         localStorage.getItem('highscore')
-        if(score.innerText > localStorage.getItem('highscore')){
-            parseInt(localStorage.setItem('highscore' , score.innerText))
+        if(parseInt(score.innerText) > localStorage.getItem('highscore')){
+            parseInt(localStorage.setItem('highscore' , score.innerText.toString()))
             highscore.innerText = parseInt(localStorage.getItem('highscore'))
         }
         alert("Game is Over");

@@ -84,10 +84,10 @@ button{
     font-size: 50px;
     display: flex;
     justify-content: end;
-    margin-right: 25px;
 }
 
 .highscore{
     position: absolute;
-    top: 10%;
+    top: 11%;
+    right: 3%;
 }
