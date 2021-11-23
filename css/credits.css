@@ -52,16 +52,61 @@ body{
 }
 
 .social{
+    list-style: none;
     position: absolute;
     top: 45%;
-    left: 42%;
+    left: 39%;
     display: flex;
-    justify-content: center;
-    list-style: none;
 }
 
 .social a{
     color: white;
-    margin: 10px;
     font-size: 25px;
+}
+
+.social li{
+    margin-right: 5%;
+}
+
+
+@media screen and (max-width: 1125px) {
+    body{
+        background-repeat: repeat-y;
+    }
+
+    .social{
+        position: absolute;
+        left: 37%;
+    }
+}
+
+
+@media screen and (max-width: 640px) {
+    .social{
+        position: absolute;
+        top: 50%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .social{
+        position: absolute;
+        top: 55%;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .social{
+        position: absolute;
+        top: 58%;
+        left: 34%;
+    }
+}
+
+
+@media screen and (max-width: 508px) {
+    .social{
+        position: absolute;
+        top: 62%;
+    }
 }
