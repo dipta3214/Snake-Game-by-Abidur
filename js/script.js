@@ -8,13 +8,6 @@ let reload = document.querySelector('.reload')
 let lastRecordedTime = 0
 let gameOver = false
 
-if(!localStorage.getItem('highscore')){
-    localStorage.setItem('highscore', 0)
-}else {
-    highscore.innerText = localStorage.getItem('highscore')
-}
-
-
 
 // positions and directions
 let snakeHeadPosition = [
@@ -31,6 +24,14 @@ let snakeDirection = {
 let foodPosition = {
     x : 5,
     y : 8
+}
+
+
+// Highscore at starting 
+if(!localStorage.getItem('highscore')){
+    localStorage.setItem('highscore', 0)
+}else {
+    highscore.innerText = localStorage.getItem('highscore')
 }
 
 
