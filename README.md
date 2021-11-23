@@ -1,7 +1,8 @@
 # Snake Game by Abidur
 
 ## Surge Link
-[Surge](snake-game-by-abidur.surge.sh)
+- [Surge](snake-game-by-abidur.surge.sh)
+***
 
 ![Snake Game Image](https://i.imgur.com/UWSiXWO.png?1)
 
