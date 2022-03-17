@@ -31,24 +31,15 @@ body{
 }
 
 
-.navbar{
-    position: absolute;
-    top: 22%;
-    left: 4%;
-    list-style: none;
-    font-size: 20px;
-}
-
 a{
     color: white;
     font-family: 'ArcadeClassic', sans-serif;
 }
 
 .reloadone{
-    position: absolute;
-    top: 22%;
-    left: 11%;
     font-size: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 button{
