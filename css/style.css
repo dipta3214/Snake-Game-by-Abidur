@@ -15,10 +15,9 @@ body{
 }
 
 .board {
-    height: 90vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
 }
 
 
@@ -51,6 +50,7 @@ button{
 
 a, button{
     padding: 5px;
+    margin-bottom: 20px;
 }
 
 .firekey{
@@ -68,10 +68,28 @@ a, button{
 
 
 
-/* @media screen and (max-width: 1300px) {
+@media screen and (max-width: 825px) {
+    .score-cards{
+        font-size: 35px;  
+    }
+
+    .firekey{
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .score-cards{
+        font-size: 25px;  
+    }
+
+    .firekey{
+        font-size: 20px;
+    }
+
     #board{
-        width: 400px;
-        height: 400px;
+        height: 350px;
+        width: 350px;
     }
 }
 
