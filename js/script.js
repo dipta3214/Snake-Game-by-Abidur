@@ -125,20 +125,28 @@ reload.addEventListener('click', () =>{
 const arrowKeys = (e) => {
     switch (e) {
         case "ArrowUp":
-            snakeDirection.x = 0;
-            snakeDirection.y = -1;
+            if(snakeDirection.y === 0){
+                snakeDirection.x = 0;
+                snakeDirection.y = -1;
+            }
             break;
         case "ArrowRight":
-            snakeDirection.x = 1;
-            snakeDirection.y = 0;
+            if(snakeDirection.x === 0){
+                snakeDirection.x = 1;
+                snakeDirection.y = 0;
+            }
             break;
         case "ArrowDown":
-            snakeDirection.x = 0;
-            snakeDirection.y = 1;
+            if(snakeDirection.y === 0){
+                snakeDirection.x = 0;
+                snakeDirection.y = 1;
+            }
             break;
         case "ArrowLeft":
-            snakeDirection.x = -1;
-            snakeDirection.y = 0;
+            if(snakeDirection.x === 0){
+                snakeDirection.x = -1;
+                snakeDirection.y = 0;
+            }
             break;
         default:
             break;
