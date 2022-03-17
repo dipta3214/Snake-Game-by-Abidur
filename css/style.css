@@ -1,8 +1,6 @@
 body{
     margin: 0;
     background-image: url('../img/background.jpg');
-    height: 100%;
-    width: 100vw;
 }
 
 #board{
@@ -16,8 +14,8 @@ body{
     background-color: #2c0d52;
 }
 
-.board{
-    height: 100vh;
+.board {
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,16 +27,29 @@ body{
     justify-content: space-evenly;
     color: white;
     font-family: 'ArcadeClassic', sans-serif;
-    font-size: 50px;
+    font-size: 50px;  
 }
 
 
+.navbar{
+    position: absolute;
+    top: 22%;
+    left: 4%;
+    list-style: none;
+    font-size: 20px;
+}
 
 a{
     color: white;
     font-family: 'ArcadeClassic', sans-serif;
 }
 
+.reloadone{
+    position: absolute;
+    top: 22%;
+    left: 11%;
+    font-size: 20px;
+}
 
 button{
     background-color: white;
@@ -48,6 +59,7 @@ button{
 }
 
 .firekey{
+    font-family: 'ArcadeClassic', sans-serif;
     font-size: 40px;                                         
 }
 
@@ -58,9 +70,6 @@ button{
 .snake-body{
     background-color: #77bfb4;
 }
-
-
-
 
 
 
