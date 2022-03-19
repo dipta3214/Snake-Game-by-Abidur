@@ -66,6 +66,10 @@ a, button{
     background-color: #77bfb4;
 }
 
+.mobile {
+    display: none;
+}
+
 
 
 @media screen and (max-width: 825px) {
@@ -91,5 +95,22 @@ a, button{
         height: 350px;
         width: 350px;
     }
+}
+
+@media screen and (max-width: 450px) {
+
+    #board{
+        height: 250px;
+        width:250px;
+    }
+
+    .mobile{
+        margin-top: 20px;
+        display: block;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
 }
 

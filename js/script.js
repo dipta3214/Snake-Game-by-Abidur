@@ -8,6 +8,11 @@ let reload = document.querySelector('.reload')
 let lastRecordedTime = 0
 let gameOver = false
 
+let upButton = document.querySelector('.up')
+let downButton = document.querySelector('.down')
+let leftButton = document.querySelector('.left')
+let rightButton = document.querySelector('.right')
+
 
 // positions and directions
 let snakeHeadPosition = [
@@ -157,6 +162,34 @@ const arrowKeys = (e) => {
 window.addEventListener('keydown', (event) => {
     fireKey.innerText = ""
         arrowKeys(event.code)
+})
+
+upButton.addEventListener('click', () => {
+    if(snakeDirection.y === 0){
+        snakeDirection.x = 0;
+        snakeDirection.y = -1;
+    }
+})
+
+downButton.addEventListener('click', () => {
+    if(snakeDirection.y === 0){
+        snakeDirection.x = 0;
+        snakeDirection.y = 1;
+    }
+})
+
+leftButton.addEventListener('click', () => {
+    if(snakeDirection.x === 0){
+        snakeDirection.x = -1;
+        snakeDirection.y = 0;
+    }
+})
+
+rightButton.addEventListener('click', () => {
+    if(snakeDirection.x === 0){
+        snakeDirection.x = 1;
+        snakeDirection.y = 0;
+    }
 })
 
 requestAnimationFrame(gameloop)
