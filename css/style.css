@@ -99,13 +99,9 @@ a, button{
 
 @media screen and (max-width: 450px) {
 
-    #board{
-        height: 250px;
-        width:250px;
-    }
 
     .mobile{
-        margin-top: 20px;
+        margin-top: 30px;
         display: block;
         display: flex;
         justify-content: center;
