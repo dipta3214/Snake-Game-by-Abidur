@@ -160,11 +160,18 @@ const arrowKeys = (e) => {
 
 // Setting up my arrow keys to move the snake
 window.addEventListener('keydown', (event) => {
-    fireKey.innerText = ""
+    if(fireKey.innerText !== ""){
+        fireKey.innerText = ""
+    }
         arrowKeys(event.code)
 })
 
+
+// Mobile Buttons
 upButton.addEventListener('click', () => {
+    if(fireKey.innerText !== ""){
+        fireKey.innerText = ""
+    }
     if(snakeDirection.y === 0){
         snakeDirection.x = 0;
         snakeDirection.y = -1;
@@ -172,6 +179,9 @@ upButton.addEventListener('click', () => {
 })
 
 downButton.addEventListener('click', () => {
+    if(fireKey.innerText !== ""){
+        fireKey.innerText = ""
+    }
     if(snakeDirection.y === 0){
         snakeDirection.x = 0;
         snakeDirection.y = 1;
@@ -179,6 +189,9 @@ downButton.addEventListener('click', () => {
 })
 
 leftButton.addEventListener('click', () => {
+    if(fireKey.innerText !== ""){
+        fireKey.innerText = ""
+    }
     if(snakeDirection.x === 0){
         snakeDirection.x = -1;
         snakeDirection.y = 0;
@@ -186,6 +199,9 @@ leftButton.addEventListener('click', () => {
 })
 
 rightButton.addEventListener('click', () => {
+    if(fireKey.innerText !== ""){
+        fireKey.innerText = ""
+    }
     if(snakeDirection.x === 0){
         snakeDirection.x = 1;
         snakeDirection.y = 0;
