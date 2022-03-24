@@ -1,6 +1,6 @@
 # Snake Game by Abidur
 
-## Surge Link
+## Deployed Link
 - [Surge](https://snake-game-by-abidur.surge.sh/)
 ***
 
