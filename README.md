@@ -14,6 +14,14 @@
 - `cd` into the folder.
 - Edit the project as you would like
 
+## 💻 Built With
+
+Technologies used in this project
+
+- HTML5
+- CSS3
+- JavaScript
+
 ## Link for trello
 - [Trello](https://trello.com/b/IbOYHikc/snake-game-by-abidur)
 
